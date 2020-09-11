@@ -5,62 +5,62 @@ public class MarsRover {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter M :");
+		//Enter M value 
 		int M = sc.nextInt();
-		System.out.println("Enter N :");
+		
+		//Enter N value 
 		
 		int N = sc.nextInt();	
 		CalculateShortestPath.initializegrid(M,N );
 
-		System.out.println("Enter number of Obstacles :");
+	    //Enter number of Obstacles
 		int P = sc.nextInt();
 		
+		//input for getting coordinates of obstacles
 		for(int i=0;i<P;i++)
 		{
-			System.out.println("Enter coordinates of obstacle "+ (i+1));
+	
 			int ox = sc.nextInt();
 			int oy = sc.nextInt();
 			CalculateShortestPath.setObstacle(ox, oy);
 			
 		}
-		System.out.println("Enter coordinate of Rare Element :");
+	
 		Integer i = sc.nextInt();
 		Integer j = sc.nextInt();
 		
-		System.out.println("Enter x coordinate of US Rover: ");
+		
 		Integer x1 = sc.nextInt();
-		System.out.println("Enter y coordinate of US Rover: ");
 		Integer y1 = sc.nextInt();
-		System.out.println("Enter direction for US Rover: ");
-		Integer dirUS = sc.nextInt();
+		String dirUS = sc.next();
 		
 		int shortestPathUS = CalculateShortestPath.calculatePath(x1,y1,i,j);
 		
-		System.out.println("Enter x coordinate of Russia Rover: ");
+		
 		Integer x2 = sc.nextInt();
-		System.out.println("Enter y coordinate of Russia Rover: ");
+	
 		Integer y2 = sc.nextInt();
-		System.out.println("Enter direction for Russia Rover: ");
-		Integer dirRus = sc.nextInt();
+	
+		String dirRus = sc.next();
 		
 		int shortestPathRussia = CalculateShortestPath.calculatePath(x2,y2,i,j);
 		
 		if (shortestPathUS != Integer.MAX_VALUE) 
-			System.out.println("Shortest Path for US Rover "+ shortestPathUS); 
+			System.out.println(shortestPathUS); 
 		else
-			System.out.println(-1); 
+			System.out.println("NA"); 
 		
 		if (shortestPathRussia != Integer.MAX_VALUE) 
-			System.out.println("Shortest Path for Russia Rover "+ shortestPathRussia); 
+			System.out.println(shortestPathRussia); 
 		else
-			System.out.println(-1); 
+			System.out.println("NA"); 
 		
 		if(shortestPathUS < shortestPathRussia)
 			
-			System.out.println("US is winner");
+			System.out.println("US");
 		
 		else if(shortestPathUS > shortestPathRussia)
-		  System.out.println("Russia is winner");
+		  System.out.println("Russia");
 		
 		else if(shortestPathUS == shortestPathRussia)
 			System.out.println("Tie");
