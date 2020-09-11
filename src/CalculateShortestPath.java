@@ -47,13 +47,10 @@ class CalculateShortestPath
 	static int rowNum[] = {-1, 0, 0, 1}; 
 	static int colNum[] = {0, -1, 1, 0}; 
 
-	// function to find the shortest path between 
-	// a given source cell to a destination cell. 
+	// function to find the shortest path between Rover and rareElement. 
 	static int BFS(int mat[][], Point src, 
 			Point dest) 
 	{ 
-		// check source and destination cell 
-		// of the matrix have value 1 
 		if (mat[src.x][src.y] != 1 || 
 				mat[dest.x][dest.y] != 1) 
 			return -1; 
@@ -72,8 +69,7 @@ class CalculateShortestPath
 			queueNode curr = q.peek(); 
 			Point pt = curr.pt; 
 
-			// If we have reached the destination cell, 
-			// we are done 
+			// If we have reached the rareElement Coordinates,we are done 
 			if (pt.x == dest.x && pt.y == dest.y) 
 				return curr.dist; 
 
@@ -97,12 +93,12 @@ class CalculateShortestPath
 			} 
 		} 
 
-		// Return -1 if destination cannot be reached 
+		// Return -1 if RareElement cannot be reached 
 		return -1; 
 	} 
 
 
-
+    //Initialize GRID
 	public static void initializegrid(int M,int N)
 	{
 		CalculateShortestPath.ROW=M;
@@ -120,24 +116,19 @@ class CalculateShortestPath
 
 
 	}
-
+    //set obstacles in grid
 	public static void setObstacle(int ox,int oy)
 	{
 		mat[ox][oy]=0;
 	}
 
-	// calculateDistance 
+	// calculateShortestDistance 
 	public static int calculatePath(int x,int y,int i,int j) 
 	{ 
 
-
-
-		CalculateShortestPath.Point RoverCoordinate =  new CalculateShortestPath.Point(x, y); 
-		CalculateShortestPath.Point RareElementCoordinate =    new CalculateShortestPath.Point(i, j); 
+		Point RoverCoordinate =  new CalculateShortestPath.Point(x, y); 
+		Point RareElementCoordinate = new CalculateShortestPath.Point(i, j); 
 		int dist = BFS(mat, RoverCoordinate, RareElementCoordinate); 
-
-		
-
 		return dist;
 
 	} 
